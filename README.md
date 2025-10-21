@@ -1,13 +1,13 @@
-# 🍅 Pomodoro Timer
+# 🍅 TaskDayPomodoro
 
-Bem-vindo ao **Pomodoro Timer**! 🍅  
+Bem-vindo ao **TaskDayPomodoro**! 🍅  
 Uma aplicação web para gerenciar seu tempo e aumentar a produtividade usando a técnica Pomodoro, com suporte a múltiplos idiomas, temas claro/escuro e estatísticas detalhadas.
 
 ## 📌 Acesse
-Visite: <a href="https://dev-juan-ibanez.github.io/pomodoro-timer/" target="_blank">Pomodoro Timer</a>
+Visite: <a href="https://dev-juan-ibanez.github.io/task-day-pomodoro/" target="_blank">TaskDayPomodoro</a>
 
 ## 🚀 O que é?
-O **Pomodoro Timer** é uma ferramenta que implementa a técnica Pomodoro, dividindo o trabalho em blocos de 25 minutos, seguidos por pausas curtas (5 minutos) e pausas longas (15-30 minutos). A aplicação permite:
+O **TaskDayPomodoro** é uma ferramenta que implementa a técnica Pomodoro, dividindo o trabalho em blocos de 25 minutos, seguidos por pausas curtas (5 minutos) e pausas longas (15-30 minutos). A aplicação permite:
 - 📋 Criar, editar e excluir tarefas
 - ⏰ Definir horários de início e fim para o Pomodoro
 - 🕒 Configurar a duração de pausas longas
@@ -43,11 +43,11 @@ O **Pomodoro Timer** é uma ferramenta que implementa a técnica Pomodoro, divid
 ## 💻 Como rodar localmente
 1. Clone o repositório:  
    ```bash
-   git clone https://github.com/dev-juan-ibanez/pomodoro-timer.git
+   git clone https://github.com/dev-juan-ibanez/task-day-pomodoro.git
    ````
 2. Acesse a pasta do projeto:
     ```bash
-    cd pomodoro-timer
+    cd task-day-pomodoro
     ````
 
 3. Abra o arquivo index.html diretamente no navegador ou use um servidor local (ex.: live-server).
@@ -63,7 +63,10 @@ Se você curtiu o projeto e quer apoiar, pode me pagar um café! ☕
 ```text
 f0098b96-0433-4266-b392-4856d85caadc
 ```
-**(Copie e cole a chave acima para contribuir!)**
+**Copie e cole a chave acima para contribuir!**
+
+## Observações
+Como o projeto teve a ideia de criar uma lista de tarefas diárias com pomodoro, então é importante se atentar com o tempo das tarefas é até um pouco de 00:00 a sugestão para colocar o tempo de finalizar as tarefas.
 
 ## 🧑‍💻 Autor
 
