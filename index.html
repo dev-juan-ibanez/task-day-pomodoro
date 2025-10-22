@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TaskDayPomodoro</title>
-  <meta name="description" content="" />
+  <title id="title">TaskDayPomodoro</title>
+  <meta name="description" content="Organize seu tempo com a técnica Pomodoro" />
   <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="container">
     <header>
       <div class="title-row">
-        <img src="assets/logo.png" alt="Logo" class="logo" />
+        <img src="assets/logo.png" alt="Logo TaskDayPomodoro" class="logo" />
         <h1 id="title"></h1>
       </div>
       <div class="subtitle-row">
         <h2 class="subtitle" id="subtitle"></h2>
-        <p class="info-icon">i</p>
+        <p class="info-icon" title="Informações sobre o Pomodoro">i</p>
       </div>
       <div class="theme-language-row">
         <div>
           <span class="theme-label"></span>
           <label class="theme-switch" title="Alternar tema">
-            <input type="checkbox" id="themeToggle" />
+            <input type="checkbox" id="themeToggle" aria-label="Alternar entre tema claro e escuro" />
             <span class="slider"></span>
           </label>
         </div>
         <div class="language-switch">
           <label for="languageSelect"></label>
-          <select id="languageSelect" title="">
+          <select id="languageSelect" title="Selecionar idioma" aria-label="Selecionar idioma">
             <option value="pt">Português</option>
             <option value="en">English</option>
             <option value="es">Español</option>
@@ -40,36 +42,36 @@
     </header>
     <main>
       <section class="task-input">
-        <input type="text" id="taskName" />
-        <button id="addTask"></button>
+        <input type="text" id="taskName" aria-label="Digite o nome da tarefa" />
+        <button id="addTask" aria-label="Adicionar tarefa"></button>
       </section>
       <section class="task-list">
         <ul class="tasks"></ul>
       </section>
       <section class="schedule-input">
         <label id="startTimeLabel" for="taskStart"></label>
-        <input type="time" id="taskStart" title="" />
+        <input type="time" id="taskStart" title="Horário de início" aria-label="Horário de início" />
         <label id="endTimeLabel" for="taskEnd"></label>
-        <input type="time" id="taskEnd" title="" />
-        <button id="setSchedule"></button>
-        <button id="updateSchedule" style="display: none;"></button>
+        <input type="time" id="taskEnd" title="Horário de término" aria-label="Horário de término" />
+        <button id="setSchedule" aria-label="Definir horário"></button>
+        <button id="updateSchedule" style="display: none;" aria-label="Atualizar horário"></button>
       </section>
       <section class="long-break-config" style="display: none;">
         <div class="long-break-row">
           <label id="longBreakLabel" for="longBreakDuration"></label>
-          <select id="longBreakDuration" title="">
+          <select id="longBreakDuration" title="Duração da pausa longa" aria-label="Duração da pausa longa">
             <option value="15"></option>
             <option value="20"></option>
             <option value="25"></option>
             <option value="30"></option>
           </select>
         </div>
-        <button id="setLongBreak"></button>
-        <button id="updateLongBreak" style="display: none;"></button>
+        <button id="setLongBreak" aria-label="Definir pausa longa" style="float: right;""></button>
+        <button id="updateLongBreak" style="display: none; float: right;" aria-label="Atualizar pausa longa"></button>
         <p class="long-break-info"></p>
       </section>
       <section class="pomodoro-control">
-        <button id="startPomodoro" style="display: none;"></button>
+        <button id="startPomodoro" style="display: none;" aria-label="Iniciar tarefa"></button>
       </section>
       <section class="pomodoro">
         <h2></h2>
@@ -90,33 +92,33 @@
     <div id="editModal" class="modal">
       <div class="modal-content">
         <h3 id="editModalTitle"></h3>
-        <input type="text" id="editTaskName" />
-        <button id="saveEdit"></button>
-        <button id="cancelEdit"></button>
+        <input type="text" id="editTaskName" aria-label="Editar nome da tarefa" />
+        <button id="saveEdit" aria-label="Salvar edição"></button>
+        <button id="cancelEdit" aria-label="Cancelar edição"></button>
       </div>
     </div>
     <div id="confirmModal" class="modal">
       <div class="modal-content">
         <h3 id="confirmModalTitle"></h3>
         <p id="confirmModalText"></p>
-        <button id="confirmYes"></button>
-        <button id="confirmNo"></button>
+        <button id="confirmYes" aria-label="Confirmar conclusão da tarefa"></button>
+        <button id="confirmNo" aria-label="Não concluir a tarefa"></button>
       </div>
     </div>
     <div id="pauseModal" class="modal">
       <div class="modal-content">
-        <h3></h3>
+        <h3>Pausa</h3>
         <p id="pauseMessage"></p>
         <div id="pauseTimer"></div>
-        <button id="skipPause"></button>
+        <button id="skipPause" aria-label="Pular pausa"></button>
       </div>
     </div>
     <div id="progressConfirmModal" class="modal">
       <div class="modal-content">
         <h3 id="progressConfirmModalTitle"></h3>
         <p id="progressConfirmModalText"></p>
-        <button id="progressConfirmYes"></button>
-        <button id="progressConfirmNo"></button>
+        <button id="progressConfirmYes" aria-label="Continuar com a tarefa atual"></button>
+        <button id="progressConfirmNo" aria-label="Passar para a próxima tarefa"></button>
       </div>
     </div>
     <div id="startTimerModal" class="modal">
@@ -124,29 +126,41 @@
         <h3></h3>
         <p id="startTimerMessage"></p>
         <div id="startTimer"></div>
-        <button id="updateScheduleFromModal"></button>
+        <button id="updateScheduleFromModal" aria-label="Atualizar horário a partir do modal"></button>
       </div>
     </div>
     <div id="pomodoroInfoModal" class="modal">
       <div class="modal-content">
-        <span class="close-modal" id="closeModal">&times;</span>
+        <span class="close-modal" id="closeModal" aria-label="Fechar modal">&times;</span>
         <h3 id="pomodoroInfoTitle"></h3>
         <p id="pomodoroInfoText"></p>
       </div>
     </div>
     <div id="completionModal" class="modal">
       <div class="modal-content">
+        <span class="close-modal" onclick="closeCompletionModal()" aria-label="Fechar modal">✖</span>
         <h3 id="completionModalTitle"></h3>
         <p id="completionMessage"></p>
         <p id="completionStats"></p>
         <canvas id="completionChart"></canvas>
-        <button id="exportCompletion"></button>
-        <button id="closeCompletion"></button>
-        <button id="resetSystem"></button>
+        <p id="completionLink"></p>
+        <button id="exportCompletion" aria-label="Exportar como PNG"></button>
+        <button id="shareCompletion" onclick="shareCompletion()" aria-label="Compartilhar conclusão"></button>
+        <button id="closeCompletion" aria-label="Fechar modal de conclusão"></button>
+        <button id="resetSystem" aria-label="Reiniciar sistema"></button>
+      </div>
+    </div>
+    <div id="errorModal" class="modal">
+      <div class="modal-content">
+        <span id="closeErrorModal" class="close">&times;</span>
+        <h2></h2>
+        <p id="errorMessage"></p>
+        <button id="closeErrorButton"></button>
       </div>
     </div>
   </div>
   <script src="script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
+
 </html>

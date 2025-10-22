@@ -6,7 +6,7 @@
   --button-bg: var(--accent-color);
   --button-hover: #0096c9;
   --button-text: #ffffff;
-  --highlight-color: #0054a6; /* Azul forte para tema claro */
+  --highlight-color: #0054a6;
 }
 
 [data-theme="dark"] {
@@ -17,7 +17,7 @@
   --button-bg: #d9e7f5;
   --button-hover: #bcd8f0;
   --button-text: #0a192f;
-  --highlight-color: #4da8da; /* Azul claro para tema escuro */
+  --highlight-color: #4da8da;
 }
 
 /* Base */
@@ -67,7 +67,6 @@ header {
   height: 32px;
 }
 
-/* Inverter cores no tema escuro */
 [data-theme="dark"] .logo {
   filter: invert(100%);
 }
@@ -174,11 +173,11 @@ h1 {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--accent-color);
 }
 
-input:checked + .slider::before {
+input:checked+.slider::before {
   transform: translateX(24px);
   content: "🌙";
 }
@@ -224,7 +223,7 @@ input:checked + .slider::before {
   transition: opacity 0.5s ease;
   display: none;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
 }
 
@@ -236,7 +235,7 @@ input:checked + .slider::before {
 .long-break-row {
   display: flex;
   gap: 0.5rem;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: nowrap;
 }
 
@@ -531,7 +530,7 @@ input:checked + .slider::before {
   font-size: 0.9rem;
   color: var(--accent-color);
   margin-bottom: 0.5rem;
-  line-height: 1.4; /* Melhor legibilidade para estatísticas */
+  line-height: 1.4;
 }
 
 /* Progress */
@@ -577,6 +576,7 @@ input:checked + .slider::before {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow-y: auto;
 }
 
 .modal.active {
@@ -589,14 +589,39 @@ input:checked + .slider::before {
   border-radius: 10px;
   width: 90%;
   max-width: 400px;
+  max-height: 90vh;
   text-align: center;
   position: relative;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--card-color);
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: var(--card-color);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 4px;
 }
 
 .modal-content.active {
   transform: scale(1);
+  opacity: 1;
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--highlight-color);
 }
 
 .modal-content h3 {
@@ -607,10 +632,26 @@ input:checked + .slider::before {
 }
 
 .modal-content p {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
   color: var(--text-color);
-  word-break: break-all;
+  line-height: 1.5;
+}
+
+.modal-content a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.modal-content a:hover,
+.modal-content a:focus {
+  color: var(--highlight-color);
+}
+
+.modal-content a:focus {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
 }
 
 .modal-content input,
@@ -644,20 +685,26 @@ input:checked + .slider::before {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin: 0.5rem;
+  margin: 0.3rem;
 }
 
-.modal-content button:hover:not(:disabled) {
+.modal-content button:hover:not(:disabled),
+.modal-content button:focus:not(:disabled) {
   background-color: var(--button-hover);
   transform: translateY(-2px);
   box-shadow: 0 0 10px rgba(0, 171, 228, 0.3);
+}
+
+.modal-content button:focus {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
 }
 
 .long-break-info {
   font-size: 0.85rem;
   color: var(--text-color);
   margin-top: 0.5rem;
-  text-align: center; /* Centralizado para consistência */
+  text-align: center;
   opacity: 0.8;
   transition: opacity 0.3s ease;
 }
@@ -673,11 +720,50 @@ input:checked + .slider::before {
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--text-color);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.close-modal:hover {
+.close-modal:hover,
+.close-modal:focus {
   color: var(--accent-color);
+  transform: scale(1.2);
+}
+
+.close-modal:focus {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
+}
+
+/* Estilo específico para o modal de erro */
+#errorModal .modal-content {
+  padding: 1.5rem;
+}
+
+#errorModal .modal-content h2 {
+  color: var(--highlight-color);
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+#errorModal .modal-content p {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+#errorModal .modal-content button#closeErrorButton {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* Estilo específico para o modal de pausa */
+#pauseModal .modal-content {
+  padding: 1.5rem;
+}
+
+#pauseModal .modal-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 #pauseTimer,
@@ -688,39 +774,138 @@ input:checked + .slider::before {
   color: var(--highlight-color);
 }
 
-#completionChart {
-  max-width: 200px;
-  width: 100%;
-  height: 200px;
-  margin: 0 auto 1rem;
+/* Estilo específico para o modal de informação do Pomodoro */
+#pomodoroInfoModal .modal-content {
+  padding: 1.5rem;
+  max-width: 500px;
+  text-align: left;
 }
 
-#completionStats {
-  text-align: left;
-  font-size: 0.9rem;
-  color: var(--text-color);
-  line-height: 1.6;
+#pomodoroInfoModal .modal-content h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+#pomodoroInfoModal .modal-content p {
+  font-size: 0.95rem;
+  line-height: 1.8;
   margin-bottom: 1rem;
 }
 
-/* Estilo específico para o modal de conclusão */
-#completionModal .modal-content {
-  padding: 2rem;
-}
-
-#completionModal .modal-content button {
-  width: 45%;
+#pomodoroInfoModal .modal-content a {
   display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
 }
 
 /* Estilo específico para o modal de confirmação de progresso */
 #progressConfirmModal .modal-content {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 #progressConfirmModal .modal-content button {
   width: 45%;
   display: inline-block;
+  margin: 0.3rem;
+}
+
+/* Estilo específico para o modal de conclusão */
+#completionModal .modal-content {
+  padding: 1.5rem;
+  max-height: 85vh;
+  overflow-y: auto;
+  background-color: var(--card-color);
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 20px rgba(0, 171, 228, 0.3);
+}
+
+#completionModal .modal-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--highlight-color);
+  text-shadow: 0 0 5px rgba(0, 171, 228, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#completionModal .modal-content p#completionMessage {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  background: linear-gradient(90deg, rgba(0, 171, 228, 0.1), rgba(0, 84, 166, 0.1));
+  padding: 0.5rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#completionModal .modal-content #completionStats {
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(0, 171, 228, 0.05);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 5px;
+}
+
+#completionModal .modal-content #completionStats .stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+#completionModal .modal-content #completionLink {
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#completionModal .modal-content #completionLink:hover,
+#completionModal .modal-content #completionLink:focus {
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(0, 171, 228, 0.3);
+}
+
+#completionModal .modal-content #completionLink:focus {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
+}
+
+#completionModal .modal-content button {
+  width: 45%;
+  display: inline-block;
+  margin: 0.3rem;
+  font-size: 0.9rem;
+}
+
+#completionModal .modal-content.exporting {
+  max-height: none;
+  overflow-y: visible;
+  transform: scale(1);
+}
+
+#completionChart {
+  max-width: 200px;
+  width: 100%;
+  height: 200px;
+  margin: 1rem auto;
 }
 
 /* Footer */
@@ -742,7 +927,7 @@ footer:hover {
 /* Responsive */
 @media (max-width: 480px) {
   .container {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .task-input,
@@ -777,16 +962,115 @@ footer:hover {
   .modal-content {
     width: 95%;
     padding: 1rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--card-color);
+  }
+
+  .modal-content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .modal-content::-webkit-scrollbar-track {
+    background: var(--card-color);
+  }
+
+  .modal-content::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 4px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .modal-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .modal-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
   }
 
   .modal-content button {
     width: 100%;
-    margin: 0.3rem 0;
+    margin: 0.2rem 0;
   }
 
   #progressConfirmModal .modal-content button,
   #completionModal .modal-content button {
     width: 100%;
+    margin: 0.2rem 0;
+  }
+
+  #completionModal .modal-content {
+    padding: 1rem;
+    max-height: 80vh;
+  }
+
+  #completionModal .modal-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  #completionModal .modal-content p#completionMessage {
+    font-size: 0.95rem;
+    padding: 0.4rem;
+  }
+
+  #completionModal .modal-content #completionStats {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    padding: 0.8rem;
+  }
+
+  #completionModal .modal-content #completionStats .stat-item {
+    margin-bottom: 0.4rem;
+  }
+
+  #completionModal .modal-content #completionLink {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  #completionModal .modal-content.exporting {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  #errorModal .modal-content h2 {
+    font-size: 1.4rem;
+  }
+
+  #errorModal .modal-content p {
+    font-size: 0.9rem;
+  }
+
+  #errorModal .modal-content button#closeErrorButton {
+    width: 100%;
+  }
+
+  #pomodoroInfoModal .modal-content {
+    max-width: 95%;
+    padding: 1rem;
+  }
+
+  #pomodoroInfoModal .modal-content h2 {
+    font-size: 1.4rem;
+  }
+
+  #pomodoroInfoModal .modal-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  #pomodoroInfoModal .modal-content a {
+    font-size: 0.85rem;
   }
 
   h1 {
@@ -802,7 +1086,8 @@ footer:hover {
     font-size: 1.8rem;
   }
 
-  #completionStats {
-    font-size: 0.85rem;
+  #completionChart {
+    max-width: 180px;
+    height: 180px;
   }
 }
