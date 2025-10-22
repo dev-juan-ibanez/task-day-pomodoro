@@ -14,9 +14,9 @@
   --text-color: #e9f1fa;
   --accent-color: #00abe4;
   --card-color: #12263f;
-  --button-bg: #d9e7f5;
-  --button-hover: #bcd8f0;
-  --button-text: #0a192f;
+  --button-bg: #2a3a5a;
+  --button-hover: #3b4e7a;
+  --button-text: #ffffff;
   --highlight-color: #4da8da;
 }
 
@@ -213,7 +213,7 @@ input:checked+.slider::before {
 }
 
 [data-theme="dark"] .language-switch select {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%23bcd8f0" d="M2 4l4 4 4-4z"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%23ffffff" d="M2 4l4 4 4-4z"/></svg>');
 }
 
 /* Long Break Config */
@@ -261,14 +261,18 @@ input:checked+.slider::before {
 }
 
 .long-break-config select:disabled {
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
   color: #666666;
   cursor: not-allowed;
+  border: 1px solid #b0b0b0;
 }
 
 [data-theme="dark"] .long-break-config select:disabled {
-  background-color: #2a354f;
-  color: #999999;
+  background-color: #1e2a44;
+  color: #ffffff;
+  cursor: not-allowed;
+  border: 1px solid var(--highlight-color);
+  opacity: 0.7;
 }
 
 .long-break-config button {
@@ -282,7 +286,6 @@ input:checked+.slider::before {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: inline-block;
 }
 
 .long-break-config button:hover:not(:disabled) {
@@ -374,14 +377,18 @@ input:checked+.slider::before {
 }
 
 .schedule-input input[type="time"]:disabled {
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
   color: #666666;
   cursor: not-allowed;
+  border: 1px solid #b0b0b0;
 }
 
 [data-theme="dark"] .schedule-input input[type="time"]:disabled {
-  background-color: #2a354f;
-  color: #999999;
+  background-color: #1e2a44;
+  color: #ffffff;
+  cursor: not-allowed;
+  border: 1px solid var(--highlight-color);
+  opacity: 0.7;
 }
 
 .schedule-input button {
@@ -489,6 +496,10 @@ input:checked+.slider::before {
   margin-left: 0.5rem;
   color: var(--text-color);
   transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .tasks li button {
+  color: #ffffff;
 }
 
 .tasks li button:hover {
@@ -734,7 +745,7 @@ input:checked+.slider::before {
   outline-offset: 2px;
 }
 
-/* Estilo específico para o modal de erro */
+/* Modal de erro */
 #errorModal .modal-content {
   padding: 1.5rem;
 }
@@ -756,7 +767,7 @@ input:checked+.slider::before {
   margin: 0 auto;
 }
 
-/* Estilo específico para o modal de pausa */
+/* Modal de pausa */
 #pauseModal .modal-content {
   padding: 1.5rem;
 }
@@ -774,7 +785,7 @@ input:checked+.slider::before {
   color: var(--highlight-color);
 }
 
-/* Estilo específico para o modal de informação do Pomodoro */
+/* Modal de informação do Pomodoro */
 #pomodoroInfoModal .modal-content {
   padding: 1.5rem;
   max-width: 500px;
@@ -799,7 +810,7 @@ input:checked+.slider::before {
   font-size: 0.9rem;
 }
 
-/* Estilo específico para o modal de confirmação de progresso */
+/* Modal de confirmação de progresso */
 #progressConfirmModal .modal-content {
   padding: 1.5rem;
 }
@@ -807,22 +818,37 @@ input:checked+.slider::before {
 #progressConfirmModal .modal-content button {
   width: 45%;
   display: inline-block;
-  margin: 0.3rem;
 }
 
-/* Estilo específico para o modal de conclusão */
+/* Modal de conclusão */
 #completionModal .modal-content {
-  padding: 1.5rem;
+  padding: 0.8rem;
   max-height: 85vh;
   overflow-y: auto;
   background-color: var(--card-color);
   border: 2px solid var(--accent-color);
   box-shadow: 0 0 20px rgba(0, 171, 228, 0.3);
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+}
+
+#completionModal .modal-content.exporting {
+  transform: none !important;
+  position: relative !important;
+  box-shadow: none !important;
+  border: 2px solid var(--accent-color) !important;
+  background-color: var(--card-color) !important;
+  overflow: visible !important;
+  width: 380px !important;
+  padding: 1rem !important;
+  margin: 0 auto !important;
+  max-height: none !important;
 }
 
 #completionModal .modal-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
   color: var(--highlight-color);
   text-shadow: 0 0 5px rgba(0, 171, 228, 0.3);
   display: flex;
@@ -832,12 +858,12 @@ input:checked+.slider::before {
 }
 
 #completionModal .modal-content p#completionMessage {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.8rem;
   color: var(--text-color);
   background: linear-gradient(90deg, rgba(0, 171, 228, 0.1), rgba(0, 84, 166, 0.1));
-  padding: 0.5rem;
+  padding: 0.4rem;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -847,10 +873,10 @@ input:checked+.slider::before {
 
 #completionModal .modal-content #completionStats {
   text-align: left;
-  font-size: 0.95rem;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+  padding: 0.6rem;
   background-color: rgba(0, 171, 228, 0.05);
   border-left: 4px solid var(--accent-color);
   border-radius: 5px;
@@ -860,15 +886,15 @@ input:checked+.slider::before {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   color: var(--text-color);
 }
 
 #completionModal .modal-content #completionLink {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   display: block;
-  margin-bottom: 1.5rem;
-  padding: 0.5rem 1rem;
+  margin-bottom: 0.8rem;
+  padding: 0.4rem 0.8rem;
   background-color: var(--button-bg);
   color: var(--button-text);
   border-radius: 5px;
@@ -888,24 +914,11 @@ input:checked+.slider::before {
   outline-offset: 2px;
 }
 
-#completionModal .modal-content button {
-  width: 45%;
-  display: inline-block;
-  margin: 0.3rem;
-  font-size: 0.9rem;
-}
-
-#completionModal .modal-content.exporting {
-  max-height: none;
-  overflow-y: visible;
-  transform: scale(1);
-}
-
-#completionChart {
-  max-width: 200px;
+#completionModal .modal-content #completionChart {
+  max-width: 180px;
   width: 100%;
-  height: 200px;
-  margin: 1rem auto;
+  height: 180px;
+  margin: 0.4rem auto;
 }
 
 /* Footer */
@@ -961,7 +974,7 @@ footer:hover {
 
   .modal-content {
     width: 95%;
-    padding: 1rem;
+    padding: 0.8rem;
     max-height: 80vh;
     overflow-y: auto;
     scrollbar-width: thin;
@@ -982,19 +995,19 @@ footer:hover {
   }
 
   .modal-content h2 {
-    font-size: 1.4rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
   }
 
   .modal-content h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
   }
 
   .modal-content p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
   }
 
   .modal-content button {
@@ -1002,53 +1015,78 @@ footer:hover {
     margin: 0.2rem 0;
   }
 
-  #progressConfirmModal .modal-content button,
-  #completionModal .modal-content button {
-    width: 100%;
-    margin: 0.2rem 0;
+  #progressConfirmModal .modal-content button {
+    width: 45%;
   }
 
   #completionModal .modal-content {
-    padding: 1rem;
+    padding: 0.6rem;
     max-height: 80vh;
+    width: 95%;
+    max-width: 320px;
+    box-sizing: border-box;
   }
 
+  /* ===== Ajuste para exportação em PNG ===== */
+  #completionModal .modal-content.exporting {
+    transform: none !important;
+    position: relative !important;
+    box-shadow: none !important;
+    border: 2px solid var(--accent-color) !important;
+    background-color: var(--card-color) !important;
+    overflow: visible !important;
+    width: 320px !important;
+    padding: 0.8rem !important;
+    margin: 0 auto !important;
+    max-height: none !important;
+  }
+
+  #completionModal .modal-content.exporting h3,
+  #completionModal .modal-content.exporting p,
+  #completionModal .modal-content.exporting .stat-item {
+    color: var(--text-color) !important;
+    text-shadow: none !important;
+    line-height: 1.6 !important;
+  }
+  /* ===== Fim do ajuste de exportação ===== */
+
   #completionModal .modal-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
   }
 
   #completionModal .modal-content p#completionMessage {
-    font-size: 0.95rem;
-    padding: 0.4rem;
+    font-size: 0.85rem;
+    padding: 0.3rem;
   }
 
   #completionModal .modal-content #completionStats {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    padding: 0.8rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    padding: 0.5rem;
   }
 
   #completionModal .modal-content #completionStats .stat-item {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
   }
 
   #completionModal .modal-content #completionLink {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
   }
 
-  #completionModal .modal-content.exporting {
-    max-height: none;
-    overflow-y: visible;
+  #completionModal .modal-content #completionChart {
+    max-width: 160px;
+    height: 160px;
+    margin: 0.3rem auto;
   }
 
   #errorModal .modal-content h2 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   #errorModal .modal-content p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   #errorModal .modal-content button#closeErrorButton {
@@ -1057,37 +1095,37 @@ footer:hover {
 
   #pomodoroInfoModal .modal-content {
     max-width: 95%;
-    padding: 1rem;
+    padding: 0.8rem;
   }
 
   #pomodoroInfoModal .modal-content h2 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   #pomodoroInfoModal .modal-content p {
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 
   #pomodoroInfoModal .modal-content a {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .pomodoro h2,
   .progress h2 {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   #timer {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
-  #completionChart {
-    max-width: 180px;
-    height: 180px;
+  #progressChart {
+    max-width: 160px;
+    height: 160px;
   }
 }

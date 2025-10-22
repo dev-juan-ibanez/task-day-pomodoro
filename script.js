@@ -73,7 +73,7 @@ const translations = {
     pomodoroInfoText: "A técnica Pomodoro foi criada por Francesco Cirillo no final dos anos 1980, na Itália, quando ele era estudante universitário. O nome 'Pomodoro' vem de um cronômetro de cozinha em forma de tomate que Cirillo usava para gerenciar seu tempo. A técnica divide o trabalho em blocos de 25 minutos, chamados de 'Pomodoros', seguidos por pausas curtas de 5 minutos. A cada 4 blocos, há uma pausa longa de 15 a 30 minutos, ideal para recarregar as energias. Quando uma tarefa é concluída, há uma pausa de transição de 3 minutos antes de iniciar a próxima tarefa. Um 'bloco' é um ciclo completo de 25 minutos de trabalho focado. Sugerimos 15 minutos de pausa longa para tarefas simples e 30 minutos para tarefas mais complexas. Referências: https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro.",
     closeModal: "x",
     completionModalTitle: "Parabéns!🎆",
-    completionMessage: "Parabéns! Todas as tarefas foram concluídas! 🎉",
+    completionMessage: "Todas as tarefas foram concluídas! 🎉 🎉✨",
     completionStats: "📊 Estatísticas da sua sessão:\n- Tempo total: {0} minutos (tempo total de trabalho e pausas)\n- Blocos: {1} (cada bloco é um ciclo de 25 minutos de trabalho focado)\n- Pausas curtas: {2} (pausas de 5 minutos após cada bloco)\n- Pausas longas: {3} (pausas de 15-30 minutos a cada 4 blocos)\n- Pausas puladas: {4} (pausas curtas ou longas que você optou por pular)\n- Tarefas concluídas: {5} (tarefas marcadas como finalizadas)",
     completionLink: "Gostou do TaskDayPomodoro? Continue usando pelo link: https://dev-juan-ibanez.github.io/task-day-pomodoro/",
     closeCompletion: "Fechar  🚪",
@@ -141,7 +141,7 @@ const translations = {
     pomodoroInfoText: "The Pomodoro Technique was created by Francesco Cirillo in the late 1980s in Italy, when he was a university student. The name 'Pomodoro' comes from a tomato-shaped kitchen timer Cirillo used to manage his time. The technique divides work into 25-minute blocks, called 'Pomodoros,' followed by 5-minute short breaks. Every 4 blocks, there’s a long break of 15 to 30 minutes, ideal for recharging. When a task is completed, there’s a 3-minute transition break before the next task. A 'block' is a complete 25-minute cycle of focused work. We suggest 15-minute long breaks for simple tasks and 30 minutes for complex tasks. References: https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro.",
     closeModal: "x",
     completionModalTitle: "Congratulations!🎆",
-    completionMessage: "Congratulations! All tasks are completed! 🎉",
+    completionMessage: "All tasks are completed! 🎉 🎉✨",
     completionStats: "📊 Your session statistics:\n- Total time: {0} minutes (total time spent working and on breaks)\n- Blocks: {1} (each block is a 25-minute cycle of focused work)\n- Short breaks: {2} (5-minute breaks after each block)\n- Long breaks: {3} (15-30 minute breaks every 4 blocks)\n- Skipped breaks: {4} (short or long breaks you chose to skip)\n- Completed tasks: {5} (tasks marked as finished)",
     completionLink: "Enjoyed TaskDayPomodoro? Keep using it at: https://dev-juan-ibanez.github.io/task-day-pomodoro/",
     closeCompletion: "Close",
@@ -209,7 +209,7 @@ const translations = {
     pomodoroInfoText: "La técnica Pomodoro fue creada por Francesco Cirillo a finales de los años 1980 en Italia, cuando era estudiante universitario. El nombre 'Pomodoro' proviene de un cronómetro de cocina en forma de tomate que Cirillo usaba para gestionar su tiempo. La técnica divide el trabajo en bloques de 25 minutos, llamados 'Pomodoros', seguidos de descansos cortos de 5 minutos. Cada 4 bloques, hay un descanso largo de 15 a 30 minutos, ideal para recargar energías. Cuando se completa una tarea, hay un descanso de transición de 3 minutos antes de la siguiente tarea. Un 'bloque' es un ciclo completo de 25 minutos de trabajo enfocado. Sugerimos 15 minutos de descanso largo para tareas simples y 30 minutos para tareas complejas. Referencias: https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro.",
     closeModal: "x",
     completionModalTitle: "¡Felicidades!🎆",
-    completionMessage: "¡Felicidades! ¡Todas las tareas están completadas! 🎉",
+    completionMessage: "¡Todas las tareas están completadas! 🎉 🎉✨",
     completionStats: "📊 Estadísticas de tu sesión:\n- Tiempo total: {0} minutos (tiempo total de trabajo y descansos)\n- Bloques: {1} (cada bloque es un ciclo de 25 minutos de trabajo enfocado)\n- Descansos cortos: {2} (descansos de 5 minutos después de cada bloque)\n- Descansos largos: {3} (descansos de 15-30 minutos cada 4 bloques)\n- Descansos saltados: {4} (descansos cortos o largos que elegiste saltar)\n- Tareas completadas: {5} (tareas marcadas como finalizadas)",
     completionLink: "¿Te gustó TaskDayPomodoro? Sigue usándolo en: https://dev-juan-ibanez.github.io/task-day-pomodoro/",
     closeCompletion: "Cerrar",
@@ -411,36 +411,54 @@ function shareCompletion() {
   const modalContent = document.querySelector("#completionModal .modal-content");
   const buttons = modalContent.querySelectorAll("button");
   const linkElement = document.getElementById("completionLink");
+  const closeModal = modalContent.querySelector(".close-modal");
 
-  linkElement.textContent = translations[lang].completionLink;
-  linkElement.style.display = "block";
+  // Ocultar botões
+  buttons.forEach(button => (button.style.display = "none"));
+  if (linkElement) linkElement.style.display = "none";
+  if (closeModal) closeModal.style.display = "none";
 
-  buttons.forEach(button => button.style.display = "none");
-  html2canvas(modalContent, {
-    useCORS: true,
-    backgroundColor: null
-  }).then(canvas => {
-    buttons.forEach(button => button.style.display = "");
-    linkElement.style.display = "block";
-    canvas.toBlob(blob => {
-      const file = new File([blob], "pomodoro_completion.png", { type: "image/png" });
-      const shareText = `${translations[lang].completionModalTitle}\n${translations[lang].completionLink}`;
+  modalContent.classList.add("exporting");
 
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator.share({
-          title: translations[lang].completionModalTitle,
-          text: shareText,
-          files: [file]
-        }).catch(err => {
-          console.error("Erro ao compartilhar imagem:", err);
-          alert(translations[lang].shareNotSupported);
-        });
-      } else {
+  setTimeout(() => {
+    html2canvas(modalContent, {
+      useCORS: true,
+      backgroundColor: getComputedStyle(modalContent).backgroundColor,
+      scale: window.devicePixelRatio * 1.5,
+    })
+      .then(canvas => {
+        modalContent.classList.remove("exporting");
+        buttons.forEach(button => (button.style.display = ""));
+        if (closeModal) closeModal.style.display = "";
+
+        canvas.toBlob(blob => {
+          const file = new File([blob], "pomodoro_completion.png", { type: "image/png" });
+          const shareText = `${translations[lang].completionModalTitle} ${translations[lang].completionMessage}`;
+
+          if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            navigator
+              .share({
+                title: translations[lang].completionModalTitle,
+                text: shareText,
+                files: [file],
+              })
+              .catch(() => alert(translations[lang].shareNotSupported));
+          } else {
+            alert(translations[lang].shareNotSupported);
+          }
+        }, "image/png");
+      })
+      .catch(err => {
+        console.error("Erro ao compartilhar imagem:", err);
+        modalContent.classList.remove("exporting");
+        buttons.forEach(button => (button.style.display = ""));
+        if (closeModal) closeModal.style.display = "";
         alert(translations[lang].shareNotSupported);
-      }
-    }, "image/png");
-  });
+      });
+  }, 250);
 }
+
+
 
 // Modal para progresso com pausa do temporizador
 function openProgressConfirmModal(taskId) {
@@ -636,6 +654,7 @@ function updateSessionStats() {
     .replace("{4}", completedTasks);
 }
 
+// Atualiza o modal de conclusão
 function updateCompletionModal() {
   const lang = localStorage.getItem("language") || "pt";
   const completionStats = document.getElementById("completionStats");
@@ -643,7 +662,7 @@ function updateCompletionModal() {
   const completionLink = document.getElementById("completionLink");
 
   if (completionMessage) {
-    completionMessage.innerHTML = `${translations[lang].completionMessage} 🎉✨`;
+    completionMessage.innerHTML = translations[lang].completionMessage;
   }
 
   if (completionStats) {
@@ -657,19 +676,17 @@ function updateCompletionModal() {
     }
 
     completionStats.innerHTML = `
-      <div class="stat-item">⏱️ <strong>Tempo total:</strong> ${Math.floor(totalTimeSeconds / 60)} minutos (trabalho + pausas)</div>
-      <div class="stat-item">🔄 <strong>Blocos:</strong> ${blockText} (25 min cada)</div>
-      <div class="stat-item">☕ <strong>Pausas curtas:</strong> ${shortBreaks} (5 min após cada bloco)</div>
-      <div class="stat-item">🌴 <strong>Pausas longas:</strong> ${longBreaks} (15-30 min a cada 4 blocos)</div>
-      <div class="stat-item">⏭️ <strong>Pausas puladas:</strong> ${skippedBreaks}${skippedText}</div>
-      <div class="stat-item">✅ <strong>Tarefas concluídas:</strong> ${completedTasks} (finalizadas)</div>
+      <div class="stat-item">⏱️ <strong>${translations[lang].completionStats.split('\n')[1].split(':')[0]}:</strong> ${Math.floor(totalTimeSeconds / 60)} minutos (trabalho + pausas)</div>
+      <div class="stat-item">🔄 <strong>${translations[lang].completionStats.split('\n')[2].split(':')[0]}:</strong> ${blockText} (25 min cada)</div>
+      <div class="stat-item">☕ <strong>${translations[lang].completionStats.split('\n')[3].split(':')[0]}:</strong> ${shortBreaks} (5 min após cada bloco)</div>
+      <div class="stat-item">🌴 <strong>${translations[lang].completionStats.split('\n')[4].split(':')[0]}:</strong> ${longBreaks} (15-30 min a cada 4 blocos)</div>
+      <div class="stat-item">⏭️ <strong>${translations[lang].completionStats.split('\n')[5].split(':')[0]}:</strong> ${skippedBreaks}${skippedText}</div>
+      <div class="stat-item">✅ <strong>${translations[lang].completionStats.split('\n')[6].split(':')[0]}:</strong> ${completedTasks} (finalizadas)</div>
     `;
   }
 
   if (completionLink) {
-    completionLink.innerHTML = `🌟 ${translations[lang].completionLink} 🌟`;
-    completionLink.href = "https://dev-juan-ibanez.github.io/task-day-pomodoro/";
-    completionLink.style.display = "block";
+    completionLink.style.display = "none"; // Mantém o link oculto
   }
 
   updateSessionStats();
@@ -711,50 +728,53 @@ function updateCompletionChart() {
   }
 }
 
+
+// Exporta o modal como PNG
 function exportCompletionAsPNG() {
   const modalContent = document.querySelector("#completionModal .modal-content");
   const buttons = modalContent.querySelectorAll("button");
   const linkElement = document.getElementById("completionLink");
-  const lang = localStorage.getItem("language") || ("pt");
+  const closeModal = modalContent.querySelector(".close-modal");
+  const lang = localStorage.getItem("language") || "pt";
 
-  // Preparar o modal para captura
+  // Ocultar elementos que não devem aparecer no PNG
+  buttons.forEach(button => (button.style.display = "none"));
+  if (linkElement) linkElement.style.display = "none";
+  if (closeModal) closeModal.style.display = "none";
+
+  // Ativar modo de exportação
   modalContent.classList.add("exporting");
-  buttons.forEach(button => button.style.display = "none");
-  linkElement.style.display = "block";
 
-  // Forçar redimensionamento para capturar todo o conteúdo
-  const originalHeight = modalContent.style.height;
-  modalContent.style.height = "auto";
+  // Forçar reflow antes de capturar
+  setTimeout(() => {
+    html2canvas(modalContent, {
+      useCORS: true,
+      backgroundColor: getComputedStyle(modalContent).backgroundColor,
+      scale: window.devicePixelRatio * 1.5,
+      logging: false,
+    })
+      .then(canvas => {
+        // Restaurar layout
+        modalContent.classList.remove("exporting");
+        buttons.forEach(button => (button.style.display = ""));
+        if (linkElement) linkElement.style.display = "none";
+        if (closeModal) closeModal.style.display = "";
 
-  html2canvas(modalContent, {
-    useCORS: true,
-    backgroundColor: getComputedStyle(modalContent).backgroundColor, // Usa a cor do tema
-    scale: 2, // Aumenta resolução da imagem
-    scrollX: 0,
-    scrollY: 0,
-    windowWidth: modalContent.scrollWidth,
-    windowHeight: modalContent.scrollHeight
-  }).then(canvas => {
-    // Restaurar estilos originais
-    modalContent.classList.remove("exporting");
-    buttons.forEach(button => button.style.display = "");
-    modalContent.style.height = originalHeight;
-
-    canvas.toBlob(blob => {
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.download = "pomodoro_completion.png";
-      link.href = url;
-      link.click();
-      URL.revokeObjectURL(url);
-    }, "image/png");
-  }).catch(err => {
-    console.error("Erro ao exportar imagem:", err);
-    modalContent.classList.remove("exporting");
-    buttons.forEach(button => button.style.display = "");
-    modalContent.style.height = originalHeight;
-    alert(translations[lang].shareNotSupported);
-  });
+        // Criar link de download
+        canvas.toBlob(blob => {
+          const link = document.createElement("a");
+          link.download = "pomodoro_completion.png";
+          link.href = URL.createObjectURL(blob);
+          link.click();
+          URL.revokeObjectURL(link.href);
+        }, "image/png");
+      })
+      .catch(err => {
+        console.error("Erro ao exportar imagem:", err);
+        modalContent.classList.remove("exporting");
+        alert(translations[lang].shareNotSupported);
+      });
+  }, 250);
 }
 
 
@@ -777,7 +797,7 @@ function resetSystem() {
   skippedLongBreaks = 0;
   completedTasks = 0;
   currentTaskId = null;
-  timeLeft = 25 *60; // TESTE RÁPIDO: 25 segundos
+  timeLeft = 25 * 60; // TESTE RÁPIDO: 25 segundos
   isWorking = true;
   isModalOpen = false;
 
@@ -1012,7 +1032,7 @@ function startPomodoro(taskId) {
   if (pomodoroInterval) clearInterval(pomodoroInterval);
   currentTaskId = taskId;
   isWorking = true;
-  timeLeft = 25 *60; // TESTE RÁPIDO: 25 segundos
+  timeLeft = 25 * 60; // TESTE RÁPIDO: 25 segundos
   isPomodoroActive = true;
   pomodoroStartTime = new Date();
 
@@ -1052,7 +1072,7 @@ function endPomodoro() {
   currentTaskId = null;
   isPomodoroActive = false;
   isModalOpen = false;
-  timeLeft = 25*60; // TESTE RÁPIDO: 25 segundos
+  timeLeft = 25 * 60; // TESTE RÁPIDO: 25 segundos
   isWorking = true;
   saveStats();
   toggleSections();
@@ -1139,7 +1159,7 @@ function setLanguage(lang) {
   updateProgress();
 }
 
-// Progress Chart
+// Atualiza o progresso (para exibir a mensagem de conclusão ao atingir 100%)
 function updateProgress() {
   const completed = tasks.filter(t => t.completed).length;
   const total = tasks.length;
@@ -1164,7 +1184,7 @@ function updateProgress() {
 
   const lang = localStorage.getItem("language") || "pt";
   if (percentage === 100) {
-    document.getElementById("progressMessage").textContent = translations[lang].congrats;
+    document.getElementById("progressMessage").textContent = translations[lang].completionMessage;
     openCompletionModal();
   } else {
     document.getElementById("progressMessage").textContent = "";
