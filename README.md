@@ -33,6 +33,10 @@ O **TaskDayPomodoro** é uma ferramenta que implementa a técnica Pomodoro, divi
 - Sistema de **internacionalização (i18n)** para suporte a múltiplos idiomas
 - Hospedado gratuitamente via **GitHub Pages**
 
+## 🛠️ Ícones utilizados
+
+- **FLATICON** Para os ícones utilizados nesse projeto — [Disponível em: https://www.flaticon.com/br/](https://www.flaticon.com/br/)
+
 ## 📸 Visualização
 
 <p align="center">
