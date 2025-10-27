@@ -70,7 +70,7 @@ const translations = {
     startTimerMessage: "O Pomodoro começará às ",
     updateScheduleFromModal: "Atualizar Horário",
     pomodoroInfoTitle: "Como funciona o Pomodoro?",
-    pomodoroInfoText: "A técnica Pomodoro foi criada por Francesco Cirillo no final dos anos 1980, na Itália, quando ele era estudante universitário. O nome 'Pomodoro' vem de um cronômetro de cozinha em forma de tomate que Cirillo usava para gerenciar seu tempo. A técnica divide o trabalho em blocos de 25 minutos, chamados de 'Pomodoros', seguidos por pausas curtas de 5 minutos. A cada 4 blocos, há uma pausa longa de 15 a 30 minutos, ideal para recarregar as energias. Quando uma tarefa é concluída, há uma pausa de transição de 3 minutos antes de iniciar a próxima tarefa. Um 'bloco' é um ciclo completo de 25 minutos de trabalho focado. Sugerimos 15 minutos de pausa longa para tarefas simples e 30 minutos para tarefas mais complexas. Referências: https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro.",
+    pomodoroInfoText: "A técnica Pomodoro foi criada por Francesco Cirillo no final dos anos 1980, na Itália, quando ele era estudante universitário. O nome 'Pomodoro' vem de um cronômetro de cozinha em forma de tomate que Cirillo usava para gerenciar seu tempo. A técnica divide o trabalho em blocos de 25 minutos, chamados de 'Pomodoros', seguidos por pausas curtas de 5 minutos. A cada 4 blocos, há uma pausa longa de 15 a 30 minutos, ideal para recarregar as energias. Quando uma tarefa is concluída, há uma pausa de transição de 3 minutos antes de iniciar a próxima tarefa. Um 'bloco' é um ciclo completo de 25 minutos de trabalho focado. Sugerimos 15 minutos de pausa longa para tarefas simples e 30 minutos para tarefas mais complexas. Referências: https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro.",
     closeModal: "x",
     completionModalTitle: "Parabéns!🎆",
     completionMessage: "Todas as tarefas foram concluídas! 🎉 🎉✨",
@@ -94,7 +94,10 @@ const translations = {
     footerText: "Feito por Juan Ibañez com ❤️ para produtividade!",
     copyright: "© Todos os direitos reservados 2025.",
     shareCompletion: "Compartilhar  📤",
-    shareNotSupported: "Compartilhamento direto não suportado neste dispositivo. Exporte a imagem e compartilhe manualmente."
+    shareNotSupported: "Compartilhamento direto não suportado neste dispositivo. Exporte a imagem e compartilhe manualmente.",
+    pauseButton: "⏸️ Pausar",
+    resumeButton: "▶️ Continuar",
+    restartButton: "🔄 Reiniciar"
   },
   en: {
     title: "TaskDayPomodoro",
@@ -138,7 +141,7 @@ const translations = {
     startTimerMessage: "The Pomodoro will start at ",
     updateScheduleFromModal: "Update Schedule",
     pomodoroInfoTitle: "How does Pomodoro work?",
-    pomodoroInfoText: "The Pomodoro Technique was created by Francesco Cirillo in the late 1980s in Italy, when he was a university student. The name 'Pomodoro' comes from a tomato-shaped kitchen timer Cirillo used to manage his time. The technique divides work into 25-minute blocks, called 'Pomodoros,' followed by 5-minute short breaks. Every 4 blocks, there’s a long break of 15 to 30 minutes, ideal for recharging. When a task is completed, there’s a 3-minute transition break before the next task. A 'block' is a complete 25-minute cycle of focused work. We suggest 15-minute long breaks for simple tasks and 30 minutes for complex tasks. References: https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro.",
+    pomodoroInfoText: "The Pomodoro Technique was created by Francesco Cirillo in the late 1980s in Italy, when he was a university student. The name 'Pomodoro' comes from a tomato-shaped kitchen timer Cirillo used to manage his time. The technique divides work into 25-minute blocks, called 'Pomodoros,' followed by 5-minute short breaks. Every 4 blocks, there's a long break of 15 to 30 minutes, ideal for recharging. When a task is completed, there's a 3-minute transition break before the next task. A 'block' is a complete 25-minute cycle of focused work. We suggest 15-minute long breaks for simple tasks and 30 minutes for complex tasks. References: https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro.",
     closeModal: "x",
     completionModalTitle: "Congratulations!🎆",
     completionMessage: "All tasks are completed! 🎉 🎉✨",
@@ -162,7 +165,10 @@ const translations = {
     footerText: "Made by Juan Ibañez with ❤️ for productivity!",
     copyright: "© All rights reserved 2025.",
     shareCompletion: "Share",
-    shareNotSupported: "Direct sharing is not supported on this device. Please export the image and share manually."
+    shareNotSupported: "Direct sharing is not supported on this device. Please export the image and share manually.",
+    pauseButton: "⏸️ Pause",
+    resumeButton: "▶️ Resume",
+    restartButton: "🔄 Restart"
   },
   es: {
     title: "TaskDayPomodoro",
@@ -220,7 +226,7 @@ const translations = {
     endTimePassed: "¡La hora de finalización ya ha pasado! Por favor, actualiza el horario.",
     errorModalTitle: "Error",
     closeErrorButton: "Cerrar",
-    longBreakSuggestion: "Sugerimos usar 15 minutos para tareas simples y 30 minutos para tareas complejas.",
+    longBreakSuggestion: "Sugerimos usar 15 minutos para tareas simples and 30 minutos para tareas complejas.",
     longBreakOptions: {
       15: "15 minutos",
       20: "20 minutos",
@@ -230,7 +236,10 @@ const translations = {
     footerText: "¡Hecho por Juan Ibañez con ❤️ para la productividad!",
     copyright: "© Todos los derechos reservados 2025.",
     shareCompletion: "Compartir",
-    shareNotSupported: "El compartir directamente no está soportado en este dispositivo. Por favor, exporta la imagen y compártela manualmente."
+    shareNotSupported: "El compartir directamente no está soportado en este dispositivo. Por favor, exporta la imagen y compártela manualmente.",
+    pauseButton: "⏸️ Pausar",
+    resumeButton: "▶️ Continuar",
+    restartButton: "🔄 Reiniciar"
   }
 };
 
@@ -245,11 +254,12 @@ let isPomodoroActive = false;
 let pomodoroStartTime = null;
 let totalTimeSeconds = parseInt(localStorage.getItem("totalTimeSeconds")) || 0;
 let skippedBreaks = parseInt(localStorage.getItem("skippedBreaks")) || 0;
-let pomodoroInterval = null;
 let currentTaskId = null;
 let isWorking = true;
-let timeLeft = 25 * 60; // TESTE RÁPIDO: 25 segundos
+let timeLeft = 25 * 60;
 let isModalOpen = false;
+let isPaused = false;
+let lastTime = 0;
 
 // Variáveis para controle de unidades e blocos com validação inicial
 let sessionCount = parseInt(localStorage.getItem("sessionCount")) || 0;
@@ -260,6 +270,10 @@ let longBreaks = parseInt(localStorage.getItem("longBreaks")) || 0;
 let skippedShortBreaks = parseInt(localStorage.getItem("skippedShortBreaks")) || 0;
 let skippedLongBreaks = parseInt(localStorage.getItem("skippedLongBreaks")) || 0;
 let completedTasks = parseInt(localStorage.getItem("completedTasks")) || 0;
+
+// Timer com setInterval + performance.now()
+let pomodoroInterval = null;
+let pomodoroStartTimestamp = 0;
 
 // Validação inicial para corrigir inconsistências no localStorage
 if (sessionCount < 4 && blockCount > 0) {
@@ -296,12 +310,20 @@ function saveStats() {
 }
 
 function updateTotalTime() {
-  if (isPomodoroActive && !isModalOpen) {
-    totalTimeSeconds++;
-    saveStats();
-    updateCompletionModal();
+  if (isPomodoroActive && !isModalOpen && !isPaused) {
+    // Verifica se passou 1 segundo desde a última atualização
+    const now = Date.now();
+    if (!lastTotalTimeUpdate || now - lastTotalTimeUpdate >= 1000) {
+      totalTimeSeconds++;
+      lastTotalTimeUpdate = now;
+      saveStats();
+      updateCompletionModal();
+    }
   }
 }
+
+// Adicionar variável para controlar a última atualização do tempo total
+let lastTotalTimeUpdate = 0;
 
 function toggleTaskComplete(id) {
   tasks = tasks.map(task => task.id === id ? { ...task, completed: !task.completed } : task);
@@ -314,7 +336,6 @@ function toggleTaskComplete(id) {
     endPomodoro();
     openCompletionModal();
   } else if (currentTaskId && id === currentTaskId) {
-    clearInterval(pomodoroInterval);
     startPause(true, true); // Pausa de transição (3 min) ao concluir tarefa
   } else {
     renderTasks();
@@ -458,13 +479,10 @@ function shareCompletion() {
   }, 250);
 }
 
-
-
 // Modal para progresso com pausa do temporizador
 function openProgressConfirmModal(taskId) {
   if (!tasks.find(t => t.id === taskId)) return; // Validação adicional
   isModalOpen = true;
-  clearInterval(pomodoroInterval);
   document.getElementById("progressConfirmModal").classList.add("active");
 
   // Incrementa sessionCount antes de abrir o modal
@@ -488,6 +506,29 @@ function openProgressConfirmModal(taskId) {
   };
 }
 
+// Função de notificação
+function sendNotification(title, body) {
+  if (!("Notification" in window)) {
+    console.log("Este navegador não suporta notificações.");
+    return;
+  }
+
+  if (Notification.permission === "granted") {
+    new Notification(title, {
+      body: body,
+      icon: "assets/logo.png",
+      tag: "pomodoro-pause",
+      requireInteraction: true // Mantém até o usuário clicar
+    });
+  } else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(permission => {
+      if (permission === "granted") {
+        sendNotification(title, body);
+      }
+    });
+  }
+}
+
 // Modal para Pausa
 let pauseInterval = null;
 
@@ -508,14 +549,23 @@ function startPause(switchTask, isTransition = false) {
   document.getElementById("pauseModal").classList.add("active");
   updatePauseTimerDisplay();
 
+  // === ENVIA NOTIFICAÇÃO ===
+  sendNotification(
+    isLongBreak ? "Pausa Longa!" : "Hora da Pausa!",
+    pauseMessage
+  );
+
   console.log(`⏸️ Iniciando pausa - Tipo: ${isTransition ? "Transição" : isLongBreak ? "Longa" : "Curta"}, Duração: ${pauseTime / 60} minutos`);
 
-  pauseInterval = setInterval(() => {
-    timeLeft--;
-    updateTotalTime();
-    updatePauseTimerDisplay();
+  let pauseStartTime = performance.now();
+  let lastPauseTimeUpdate = pauseStartTime;
 
-    if (timeLeft <= 0) {
+  clearInterval(pauseInterval);
+  pauseInterval = setInterval(() => {
+    const elapsed = Math.floor((performance.now() - pauseStartTime) / 1000);
+    const remaining = pauseTime - elapsed;
+
+    if (remaining <= 0) {
       clearInterval(pauseInterval);
       document.getElementById("pauseModal").classList.remove("active");
 
@@ -537,8 +587,21 @@ function startPause(switchTask, isTransition = false) {
       } else {
         startPomodoro(currentTaskId); // Reinicia trabalho na mesma tarefa
       }
+      return;
     }
-  }, 1000);
+
+    timeLeft = remaining;
+    updatePauseTimerDisplay();
+    
+    // Atualiza o tempo total apenas uma vez por segundo durante a pausa
+    const now = performance.now();
+    if (now - lastPauseTimeUpdate >= 1000) {
+      totalTimeSeconds++;
+      lastPauseTimeUpdate = now;
+      saveStats();
+      updateCompletionModal();
+    }
+  }, 100);
 
   document.getElementById("skipPause").onclick = () => {
     clearInterval(pauseInterval);
@@ -692,7 +755,6 @@ function updateCompletionModal() {
   updateSessionStats();
 }
 
-
 function updateCompletionChart() {
   const completed = tasks.filter(t => t.completed).length;
   const total = tasks.length;
@@ -727,7 +789,6 @@ function updateCompletionChart() {
     ctx.fillText("100%", 100, 100);
   }
 }
-
 
 // Exporta o modal como PNG
 function exportCompletionAsPNG() {
@@ -777,7 +838,54 @@ function exportCompletionAsPNG() {
   }, 250);
 }
 
+// Funções para controle de pause/continuar/reiniciar
+function togglePause() {
+  const lang = localStorage.getItem("language") || "pt";
+  const pauseBtn = document.getElementById("pauseButton");
+  if (!pauseBtn) return;
 
+  if (isPaused) {
+    isPaused = false;
+    pauseBtn.textContent = translations[lang].pauseButton;
+    pomodoroStartTimestamp = performance.now() - (25 * 60 - timeLeft) * 1000;
+  } else {
+    isPaused = true;
+    pauseBtn.textContent = translations[lang].resumeButton;
+  }
+}
+
+function restartPomodoro() {
+  const lang = localStorage.getItem("language") || "pt";
+  
+  if (confirm("Deseja realmente reiniciar o Pomodoro? Você voltará para a configuração inicial.")) {
+    isPomodoroActive = false;
+    isPaused = false;
+    currentTaskId = null;
+    timeLeft = 25 * 60;
+    
+    clearInterval(startTimerInterval);
+    clearInterval(pauseInterval);
+    clearInterval(pomodoroInterval);
+    
+    // Reativar controles de configuração
+    document.getElementById("taskStart").disabled = false;
+    document.getElementById("taskEnd").disabled = false;
+    document.getElementById("longBreakDuration").disabled = false;
+    document.getElementById("setSchedule").style.display = "inline-block";
+    document.getElementById("updateSchedule").style.display = "none";
+    document.getElementById("setLongBreak").style.display = "inline-block";
+    document.getElementById("updateLongBreak").style.display = "none";
+    document.getElementById("startPomodoro").style.display = "inline-block";
+    
+    // Resetar botões de controle
+    document.getElementById("pauseButton").style.display = "none";
+    document.getElementById("restartButton").style.display = "none";
+    document.getElementById("pauseButton").textContent = translations[lang].pauseButton;
+    
+    console.log("🔄 Pomodoro reiniciado - Voltando para configuração");
+    toggleSections();
+  }
+}
 
 function resetSystem() {
   tasks = [];
@@ -797,13 +905,14 @@ function resetSystem() {
   skippedLongBreaks = 0;
   completedTasks = 0;
   currentTaskId = null;
-  timeLeft = 25 * 60; // TESTE RÁPIDO: 25 segundos
+  timeLeft = 25 * 60;
   isWorking = true;
   isModalOpen = false;
+  isPaused = false;
 
-  clearInterval(pomodoroInterval);
   clearInterval(startTimerInterval);
   clearInterval(pauseInterval);
+  clearInterval(pomodoroInterval);
 
   saveTasks();
   saveSchedule();
@@ -826,16 +935,11 @@ function resetSystem() {
   document.getElementById("progressConfirmModal").classList.remove("active");
   document.getElementById("errorModal").classList.remove("active");
 
-  console.log("🔄 Sistema reiniciado - Todos os contadores zerados");
-  console.log("📊 Estado atual:", {
-    sessionCount,
-    blockCount,
-    shortBreaks,
-    longBreaks,
-    skippedShortBreaks,
-    skippedLongBreaks
-  });
+  // Resetar botões de controle
+  document.getElementById("pauseButton").style.display = "none";
+  document.getElementById("restartButton").style.display = "none";
 
+  console.log("🔄 Sistema reiniciado - Todos os contadores zerados");
   toggleSections();
 }
 
@@ -855,6 +959,8 @@ function toggleSections() {
   const pomodoro = document.querySelector(".pomodoro");
   const progress = document.querySelector(".progress");
   const longBreakSelect = document.getElementById("longBreakDuration");
+  const pauseButton = document.getElementById("pauseButton");
+  const restartButton = document.getElementById("restartButton");
 
   if (tasks.length > 0) {
     taskList.classList.add("active");
@@ -885,10 +991,12 @@ function toggleSections() {
     longBreakConfig.classList.add("active");
     setLongBreak.style.display = "inline-block";
     updateLongBreak.style.display = "none";
-    startPomodoro.style.display = "none";
+    startPomodoro.style.display = "none"; // ← CORREÇÃO: Esconder botão iniciar tarefa
     pomodoroControl.classList.add("active");
     pomodoro.classList.remove("active");
     progress.classList.remove("active");
+    if (pauseButton) pauseButton.style.display = "none";
+    if (restartButton) restartButton.style.display = "none";
   } else if (isScheduleSet && isLongBreakSet && tasks.length > 0 && !currentTaskId) {
     taskStart.disabled = true;
     taskEnd.disabled = true;
@@ -900,10 +1008,12 @@ function toggleSections() {
     longBreakConfig.classList.add("active");
     setLongBreak.style.display = "none";
     updateLongBreak.style.display = "inline-block";
-    startPomodoro.style.display = "inline-block";
+    startPomodoro.style.display = "inline-block"; // ← CORREÇÃO: Mostrar botão iniciar tarefa
     pomodoroControl.classList.add("active");
     pomodoro.classList.remove("active");
     progress.classList.remove("active");
+    if (pauseButton) pauseButton.style.display = "none";
+    if (restartButton) restartButton.style.display = "none";
   } else if (currentTaskId && tasks.length > 0) {
     taskStart.disabled = true;
     taskEnd.disabled = true;
@@ -917,12 +1027,18 @@ function toggleSections() {
     updateLongBreak.style.display = "none";
     startPomodoro.style.display = "none";
     pomodoroControl.classList.add("active");
+    
+    // Mostrar botões de controle apenas durante Pomodoro ativo
     if (isPomodoroActive) {
       pomodoro.classList.add("active");
       progress.classList.add("active");
+      if (pauseButton) pauseButton.style.display = "inline-block";
+      if (restartButton) restartButton.style.display = "inline-block";
     } else {
       pomodoro.classList.remove("active");
       progress.classList.remove("active");
+      if (pauseButton) pauseButton.style.display = "none";
+      if (restartButton) restartButton.style.display = "none";
     }
   } else {
     taskStart.disabled = false;
@@ -938,6 +1054,8 @@ function toggleSections() {
     startPomodoro.style.display = "none";
     pomodoro.classList.remove("active");
     progress.classList.remove("active");
+    if (pauseButton) pauseButton.style.display = "none";
+    if (restartButton) restartButton.style.display = "none";
   }
 
   renderTasks();
@@ -969,42 +1087,14 @@ function calculatePomodoroSessions() {
   return (totalCycles * 4) + additionalSessions;
 }
 
+// NOVA FUNÇÃO startPomodoro COM setInterval + performance.now()
+// NOVA FUNÇÃO startPomodoro COM setInterval + performance.now()
 function startPomodoro(taskId) {
   const task = tasks.find(t => t.id === taskId);
   const lang = localStorage.getItem("language") || "pt";
-  const errorModal = document.getElementById("errorModal");
-  const errorMessage = document.getElementById("errorMessage");
-  const closeErrorModal = () => {
-    errorModal.classList.remove("active");
-    document.getElementById("taskStart").disabled = false;
-    document.getElementById("taskEnd").disabled = false;
-    document.getElementById("longBreakDuration").disabled = false;
-    document.getElementById("setSchedule").style.display = "inline-block";
-    document.getElementById("updateSchedule").style.display = "none";
-    document.getElementById("setLongBreak").style.display = "inline-block";
-    document.getElementById("updateLongBreak").style.display = "none";
-    document.getElementById("startPomodoro").style.display = "none";
-    document.querySelector(".long-break-config").style.display = "none";
-    isScheduleSet = false;
-    isLongBreakSet = false;
-    schedule.startTime = null;
-    schedule.endTime = null;
-    saveSchedule();
-    toggleSections();
-  };
 
-  if (!task) {
-    errorMessage.textContent = translations[lang].noTasks;
-    errorModal.classList.add("active");
-    document.getElementById("closeErrorButton").onclick = closeErrorModal;
-    document.getElementById("closeErrorModal").onclick = closeErrorModal;
-    return;
-  }
-  if (!schedule.startTime || !schedule.endTime || !isScheduleSet || !isLongBreakSet) {
-    errorMessage.textContent = translations[lang].noSchedule;
-    errorModal.classList.add("active");
-    document.getElementById("closeErrorButton").onclick = closeErrorModal;
-    document.getElementById("closeErrorModal").onclick = closeErrorModal;
+  if (!task || !isScheduleSet || !isLongBreakSet) {
+    showError(translations[lang].noSchedule);
     return;
   }
 
@@ -1017,10 +1107,7 @@ function startPomodoro(taskId) {
   endTime.setHours(endHours, endMinutes, 0, 0);
 
   if (now > endTime) {
-    errorMessage.textContent = translations[lang].endTimePassed;
-    errorModal.classList.add("active");
-    document.getElementById("closeErrorButton").onclick = closeErrorModal;
-    document.getElementById("closeErrorModal").onclick = closeErrorModal;
+    showError(translations[lang].endTimePassed);
     return;
   }
 
@@ -1029,50 +1116,94 @@ function startPomodoro(taskId) {
     return;
   }
 
-  if (pomodoroInterval) clearInterval(pomodoroInterval);
   currentTaskId = taskId;
   isWorking = true;
-  timeLeft = 25 * 60; // TESTE RÁPIDO: 25 segundos
+  timeLeft = 25 * 60;
   isPomodoroActive = true;
-  pomodoroStartTime = new Date();
+  isPaused = false;
 
-  console.log(`▶️ Iniciando Pomodoro - Tarefa: ${task.name}, Sessão: ${sessionCount + 1}, Bloco atual: ${Math.floor(sessionCount / 4) + 1}`);
+  // Salva o momento exato de início
+  pomodoroStartTimestamp = performance.now();
+  lastTime = 0;
+  lastTotalTimeUpdate = 0;
+
+  console.log(`Iniciando Pomodoro - Tarefa: ${task.name}`);
 
   updateTimerDisplay();
-  pomodoroInterval = setInterval(runPomodoro, 1000);
   toggleSections();
+
+  // Usa setInterval + performance.now() → funciona em segundo plano
+  clearInterval(pomodoroInterval);
+  pomodoroInterval = setInterval(() => {
+    if (isPaused || isModalOpen) return;
+
+    const elapsed = Math.floor((performance.now() - pomodoroStartTimestamp) / 1000);
+    const remaining = 25 * 60 - elapsed;
+
+    if (remaining <= 0) {
+      clearInterval(pomodoroInterval);
+      isWorking = false;
+      openProgressConfirmModal(currentTaskId);
+      return;
+    }
+
+    timeLeft = remaining;
+    updateTimerDisplay();
+    
+    // Atualiza o tempo total apenas uma vez por segundo
+    const now = performance.now();
+    if (now - lastTotalTimeUpdate >= 1000) {
+      totalTimeSeconds++;
+      lastTotalTimeUpdate = now;
+      saveStats();
+      updateCompletionModal();
+    }
+  }, 100); // Atualiza 10x por segundo para precisão do timer, mas tempo total só 1x por segundo
 }
 
-function runPomodoro() {
-  if (!isPomodoroActive) return; // Evita execução se Pomodoro não estiver ativo
-  const lang = localStorage.getItem("language") || "pt";
+function showError(message) {
+  const errorModal = document.getElementById("errorModal");
+  const errorMessage = document.getElementById("errorMessage");
+  errorMessage.textContent = message;
+  errorModal.classList.add("active");
+  
+  const closeErrorModal = () => {
+    errorModal.classList.remove("active");
+    document.getElementById("taskStart").disabled = false;
+    document.getElementById("taskEnd").disabled = false;
+    document.getElementById("longBreakDuration").disabled = false;
+    document.getElementById("setSchedule").style.display = "inline-block";
+    document.getElementById("updateSchedule").style.display = "none";
+    document.getElementById("setLongBreak").style.display = "inline-block";
+    document.getElementById("updateLongBreak").style.display = "none";
+    document.getElementById("startPomodoro").style.display = "inline-block";
+    document.querySelector(".long-break-config").style.display = "none";
+    isScheduleSet = false;
+    isLongBreakSet = false;
+    schedule.startTime = null;
+    schedule.endTime = null;
+    saveSchedule();
+    toggleSections();
+  };
 
-  if (!isModalOpen) {
-    timeLeft--;
-    updateTotalTime();
-  }
-
-  if (timeLeft <= 0 && !isModalOpen) {
-    isWorking = false;
-    openProgressConfirmModal(currentTaskId);
-  }
-
-  updateTimerDisplay();
+  document.getElementById("closeErrorButton").onclick = closeErrorModal;
+  document.getElementById("closeErrorModal").onclick = closeErrorModal;
 }
 
 function endPomodoro() {
-  clearInterval(pomodoroInterval);
   clearInterval(startTimerInterval);
   clearInterval(pauseInterval);
-  pomodoroInterval = null;
+  clearInterval(pomodoroInterval);
   startTimerInterval = null;
   pauseInterval = null;
+  pomodoroInterval = null;
   document.getElementById("pomodoroMessage").textContent = "";
   document.getElementById("sessionStats").textContent = "";
   currentTaskId = null;
   isPomodoroActive = false;
   isModalOpen = false;
-  timeLeft = 25 * 60; // TESTE RÁPIDO: 25 segundos
+  isPaused = false;
+  timeLeft = 25 * 60;
   isWorking = true;
   saveStats();
   toggleSections();
@@ -1096,67 +1227,113 @@ function getBrowserLang() {
   return translations[lang] ? lang : "pt";
 }
 
+// FUNÇÃO setLanguage CORRIGIDA E SEGURA
 function setLanguage(lang) {
-  localStorage.setItem("language", lang);
-  document.getElementById("title").textContent = translations[lang].title;
-  document.getElementById("subtitle").textContent = translations[lang].subtitle;
-  document.getElementById("taskName").placeholder = translations[lang].taskPlaceholder;
-  document.getElementById("addTask").textContent = translations[lang].addTask;
-  document.getElementById("startTimeLabel").textContent = translations[lang].startTimeTitle;
-  document.getElementById("endTimeLabel").textContent = translations[lang].endTimeTitle;
-  document.getElementById("setSchedule").textContent = translations[lang].setSchedule;
-  document.getElementById("updateSchedule").textContent = translations[lang].updateSchedule;
-  document.getElementById("longBreakLabel").textContent = translations[lang].longBreakLabel;
-  document.getElementById("setLongBreak").textContent = translations[lang].setLongBreak;
-  document.getElementById("updateLongBreak").textContent = translations[lang].updateLongBreak;
-  document.getElementById("startPomodoro").textContent = translations[lang].startPomodoro;
-  document.getElementById("progressTitle").textContent = translations[lang].progressTitle;
-  document.getElementById("editModalTitle").textContent = translations[lang].editModalTitle;
-  document.getElementById("saveEdit").textContent = translations[lang].saveEdit;
-  document.getElementById("cancelEdit").textContent = translations[lang].cancelEdit;
-  document.getElementById("confirmModalTitle").textContent = translations[lang].confirmModalTitle;
-  document.getElementById("confirmModalText").textContent = translations[lang].confirmModalText;
-  document.getElementById("confirmYes").textContent = translations[lang].confirmYes;
-  document.getElementById("confirmNo").textContent = translations[lang].confirmNo;
-  document.getElementById("progressConfirmModalTitle").textContent = translations[lang].progressConfirmModalTitle;
-  document.getElementById("progressConfirmModalText").textContent = translations[lang].progressConfirmModalText;
-  document.getElementById("progressConfirmYes").textContent = translations[lang].progressConfirmYes;
-  document.getElementById("progressConfirmNo").textContent = translations[lang].progressConfirmNo;
-  document.getElementById("skipPause").textContent = translations[lang].skipPause;
-  document.getElementById("updateScheduleFromModal").textContent = translations[lang].updateScheduleFromModal;
-  document.getElementById("pomodoroInfoTitle").textContent = translations[lang].pomodoroInfoTitle;
-  document.getElementById("pomodoroInfoText").textContent = translations[lang].pomodoroInfoText;
-  document.getElementById("closeModal").textContent = translations[lang].closeModal;
-  document.getElementById("completionModalTitle").textContent = translations[lang].completionModalTitle;
-  document.getElementById("completionMessage").textContent = translations[lang].completionMessage;
-  document.getElementById("closeCompletion").textContent = translations[lang].closeCompletion;
-  document.getElementById("exportCompletion").textContent = translations[lang].exportCompletion;
-  document.getElementById("shareCompletion").textContent = translations[lang].shareCompletion;
-  document.getElementById("resetSystem").textContent = translations[lang].resetSystem;
-  document.getElementById("errorModal").querySelector("h2").textContent = translations[lang].errorModalTitle;
-  document.getElementById("closeErrorButton").textContent = translations[lang].closeErrorButton;
+  try {
+    localStorage.setItem("language", lang);
+    
+    // Atualiza o título da página
+    document.title = translations[lang].title;
+    
+    // Função auxiliar para atualizar elementos com segurança
+    function safeSetText(id, text) {
+      const element = document.getElementById(id);
+      if (element && typeof element.textContent !== 'undefined') {
+        element.textContent = text;
+      }
+    }
+    
+    function safeSetPlaceholder(id, text) {
+      const element = document.getElementById(id);
+      if (element) element.placeholder = text;
+    }
 
-  document.querySelector("footer p:not(.copyright)").textContent = translations[lang].footerText;
-  document.querySelector("footer p.copyright").textContent = translations[lang].copyright;
+    // Atualiza o h1 com id="title" de forma segura
+    const h1Title = document.querySelector('h1#title');
+    if (h1Title) {
+      h1Title.textContent = translations[lang].title;
+    }
 
-  const longBreakSelect = document.getElementById("longBreakDuration");
-  longBreakSelect.innerHTML = "";
-  Object.entries(translations[lang].longBreakOptions).forEach(([value, text]) => {
-    const option = document.createElement("option");
-    option.value = value;
-    option.textContent = text;
-    longBreakSelect.appendChild(option);
-  });
-  longBreakSelect.value = localStorage.getItem("longBreakDuration") || 15;
+    // Atualiza elementos de texto de forma segura
+    safeSetText('subtitle', translations[lang].subtitle);
+    safeSetPlaceholder('taskName', translations[lang].taskPlaceholder);
+    safeSetText('addTask', translations[lang].addTask);
+    safeSetText('startTimeLabel', translations[lang].startTimeTitle);
+    safeSetText('endTimeLabel', translations[lang].endTimeTitle);
+    safeSetText('setSchedule', translations[lang].setSchedule);
+    safeSetText('updateSchedule', translations[lang].updateSchedule);
+    safeSetText('longBreakLabel', translations[lang].longBreakLabel);
+    safeSetText('setLongBreak', translations[lang].setLongBreak);
+    safeSetText('updateLongBreak', translations[lang].updateLongBreak);
+    safeSetText('startPomodoro', translations[lang].startPomodoro);
+    safeSetText('progressTitle', translations[lang].progressTitle);
+    safeSetText('editModalTitle', translations[lang].editModalTitle);
+    safeSetText('saveEdit', translations[lang].saveEdit);
+    safeSetText('cancelEdit', translations[lang].cancelEdit);
+    safeSetText('confirmModalTitle', translations[lang].confirmModalTitle);
+    safeSetText('confirmModalText', translations[lang].confirmModalText);
+    safeSetText('confirmYes', translations[lang].confirmYes);
+    safeSetText('confirmNo', translations[lang].confirmNo);
+    safeSetText('progressConfirmModalTitle', translations[lang].progressConfirmModalTitle);
+    safeSetText('progressConfirmModalText', translations[lang].progressConfirmModalText);
+    safeSetText('progressConfirmYes', translations[lang].progressConfirmYes);
+    safeSetText('progressConfirmNo', translations[lang].progressConfirmNo);
+    safeSetText('skipPause', translations[lang].skipPause);
+    safeSetText('updateScheduleFromModal', translations[lang].updateScheduleFromModal);
+    safeSetText('pomodoroInfoTitle', translations[lang].pomodoroInfoTitle);
+    safeSetText('pomodoroInfoText', translations[lang].pomodoroInfoText);
+    safeSetText('closeModal', translations[lang].closeModal);
+    safeSetText('completionModalTitle', translations[lang].completionModalTitle);
+    safeSetText('completionMessage', translations[lang].completionMessage);
+    safeSetText('closeCompletion', translations[lang].closeCompletion);
+    safeSetText('exportCompletion', translations[lang].exportCompletion);
+    safeSetText('shareCompletion', translations[lang].shareCompletion);
+    safeSetText('resetSystem', translations[lang].resetSystem);
+    safeSetText('closeErrorButton', translations[lang].closeErrorButton);
+    safeSetText('pauseButton', translations[lang].pauseButton);
+    safeSetText('restartButton', translations[lang].restartButton);
 
-  const longBreakInfo = document.querySelector(".long-break-info");
-  if (longBreakInfo) {
-    longBreakInfo.textContent = translations[lang].longBreakSuggestion;
+    // Atualiza elementos especiais
+    const errorModalTitle = document.querySelector("#errorModal h2");
+    if (errorModalTitle) {
+      errorModalTitle.textContent = translations[lang].errorModalTitle;
+    }
+
+    const footerText = document.querySelector("footer p:not(.copyright)");
+    if (footerText) {
+      footerText.textContent = translations[lang].footerText;
+    }
+
+    const copyright = document.querySelector("footer p.copyright");
+    if (copyright) {
+      copyright.textContent = translations[lang].copyright;
+    }
+
+    // Atualiza as opções de pausa longa
+    const longBreakSelect = document.getElementById("longBreakDuration");
+    if (longBreakSelect) {
+      longBreakSelect.innerHTML = "";
+      Object.entries(translations[lang].longBreakOptions).forEach(([value, text]) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = text;
+        longBreakSelect.appendChild(option);
+      });
+      longBreakSelect.value = localStorage.getItem("longBreakDuration") || 15;
+    }
+
+    const longBreakInfo = document.querySelector(".long-break-info");
+    if (longBreakInfo) {
+      longBreakInfo.textContent = translations[lang].longBreakSuggestion;
+    }
+
+    renderTasks();
+    updateCompletionModal();
+    updateProgress();
+    
+  } catch (error) {
+    console.error('Erro ao definir idioma:', error);
   }
-
-  renderTasks();
-  updateCompletionModal();
-  updateProgress();
 }
 
 // Atualiza o progresso (para exibir a mensagem de conclusão ao atingir 100%)
@@ -1191,11 +1368,31 @@ function updateProgress() {
   }
 }
 
-// Inicialização
+// FUNÇÃO CORRIGIDA PARA ADICIONAR TAREFAS
+function handleAddTask() {
+  const taskInput = document.getElementById("taskName");
+  const name = taskInput.value.trim();
+  const lang = localStorage.getItem("language") || "pt";
+  
+  if (name) {
+    addTask(name);
+    taskInput.value = "";
+    taskInput.focus(); // Mantém o foco no input para adicionar mais tarefas
+  } else {
+    alert(translations[lang].taskPlaceholder);
+  }
+}
+
+// Inicialização CORRIGIDA
 document.addEventListener("DOMContentLoaded", () => {
   setInitialTheme();
   document.getElementById("themeToggle").addEventListener("change", toggleTheme);
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", handleSystemThemeChange);
+
+  // Solicita permissão de notificação
+  if ("Notification" in window && Notification.permission === "default") {
+    Notification.requestPermission();
+  }
 
   const savedLang = localStorage.getItem("language") || getBrowserLang();
   document.getElementById("languageSelect").value = savedLang;
@@ -1208,16 +1405,19 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("longBreakDuration", longBreakDuration);
   });
 
-  document.getElementById("addTask").addEventListener("click", () => {
-    const name = document.getElementById("taskName").value;
-    const lang = localStorage.getItem("language") || "pt";
-    if (name) {
-      addTask(name);
-      document.getElementById("taskName").value = "";
-    } else {
-      alert(translations[lang].taskPlaceholder);
+  // CORREÇÃO: Event listener para o botão de adicionar tarefa
+  document.getElementById("addTask").addEventListener("click", handleAddTask);
+
+  // CORREÇÃO: Também permitir adicionar tarefa pressionando Enter
+  document.getElementById("taskName").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      handleAddTask();
     }
   });
+
+  // Adicionar event listeners para os novos botões
+  document.getElementById("pauseButton").addEventListener("click", togglePause);
+  document.getElementById("restartButton").addEventListener("click", restartPomodoro);
 
   document.getElementById("setSchedule").addEventListener("click", () => {
     const startTime = document.getElementById("taskStart").value;
@@ -1263,7 +1463,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("updateSchedule").style.display = "none";
     document.getElementById("setLongBreak").style.display = "inline-block";
     document.getElementById("updateLongBreak").style.display = "none";
-    document.getElementById("startPomodoro").style.display = "none";
+    document.getElementById("startPomodoro").style.display = "inline-block";
     document.querySelector(".long-break-config").style.display = "none";
     isScheduleSet = false;
     isLongBreakSet = false;
@@ -1275,29 +1475,29 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("setLongBreak").addEventListener("click", () => {
-    const longBreak = document.getElementById("longBreakDuration").value;
-    const lang = localStorage.getItem("language") || "pt";
-    if (longBreak) {
-      longBreakDuration = parseInt(longBreak);
-      localStorage.setItem("longBreakDuration", longBreakDuration);
-      isLongBreakSet = true;
-      toggleSections();
-    } else {
-      document.getElementById("errorMessage").textContent = "Por favor, selecione uma duração para a pausa longa.";
-      document.getElementById("errorModal").classList.add("active");
-      const closeErrorModal = () => {
-        document.getElementById("errorModal").classList.remove("active");
-      };
-      document.getElementById("closeErrorButton").onclick = closeErrorModal;
-      document.getElementById("closeErrorModal").onclick = closeErrorModal;
-    }
-  });
+  const longBreak = document.getElementById("longBreakDuration").value;
+  const lang = localStorage.getItem("language") || "pt";
+  if (longBreak) {
+    longBreakDuration = parseInt(longBreak);
+    localStorage.setItem("longBreakDuration", longBreakDuration);
+    isLongBreakSet = true;
+    toggleSections(); // ← GARANTIR que toggleSections é chamado
+  } else {
+    document.getElementById("errorMessage").textContent = "Por favor, selecione uma duração para a pausa longa.";
+    document.getElementById("errorModal").classList.add("active");
+    const closeErrorModal = () => {
+      document.getElementById("errorModal").classList.remove("active");
+    };
+    document.getElementById("closeErrorButton").onclick = closeErrorModal;
+    document.getElementById("closeErrorModal").onclick = closeErrorModal;
+  }
+});
 
   document.getElementById("updateLongBreak").addEventListener("click", () => {
     document.getElementById("longBreakDuration").disabled = false;
     document.getElementById("setLongBreak").style.display = "inline-block";
     document.getElementById("updateLongBreak").style.display = "none";
-    document.getElementById("startPomodoro").style.display = "none";
+    document.getElementById("startPomodoro").style.display = "inline-block";
     isLongBreakSet = false;
     toggleSections();
   });
@@ -1312,7 +1512,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("updateSchedule").style.display = "none";
     document.getElementById("setLongBreak").style.display = "inline-block";
     document.getElementById("updateLongBreak").style.display = "none";
-    document.getElementById("startPomodoro").style.display = "none";
+    document.getElementById("startPomodoro").style.display = "inline-block";
     document.querySelector(".long-break-config").style.display = "none";
     isScheduleSet = false;
     isLongBreakSet = false;
@@ -1336,7 +1536,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("updateSchedule").style.display = "none";
       document.getElementById("setLongBreak").style.display = "inline-block";
       document.getElementById("updateLongBreak").style.display = "none";
-      document.getElementById("startPomodoro").style.display = "none";
+      document.getElementById("startPomodoro").style.display = "inline-block";
       document.querySelector(".long-break-config").style.display = "none";
       isScheduleSet = false;
       isLongBreakSet = false;
